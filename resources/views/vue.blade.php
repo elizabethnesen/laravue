@@ -11,7 +11,8 @@
 </head>
 <body>
 <div id="app">
-    <list-component></list-component>
+    <layout></layout>
+    {{--<list-component></list-component>--}}
 </div>
 
 <script src="js/app.js"></script>
