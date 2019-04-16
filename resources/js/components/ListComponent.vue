@@ -25,62 +25,33 @@
                 </tr>
                 </tbody>
             </table>
-            <form>
-                <input type="text" placeholder="Наименование" v-model="title">
-                <input type="text" placeholder="Цена за единицу" v-model="price">
-                <button type="button" class="btn btn-success" @click="addPosition">Добавить</button>
-            </form>
         </div>
     </div>
 </template>
 
+
+
+
 <script>
+    import {mapGetters} from 'Vuex'
     export default {
-        data: function () {
+        data() {
             return {
-                balance: 70.00, //остаток по умолчанию
-                title: '',
-                price: '',
-                count: '',
-                items:
-                [
-                    {
-                        title: 'Яблоко',
-                        count: 0,
-                        price: 10,
-                        showItem: false
-                    },
-                    {
-                        title: 'Апельсин',
-                        count: 0,
-                        price: 30,
-                        showItem: false
-                    },
-                    {
-                        title: 'Банан',
-                        count: 0,
-                        price: 15,
-                        showItem: false
-                    }
-                ]
+                balance: 70.00
             }
         },
+        computed: {
+            ...mapGetters({
+                items: 'getItems'
+            })
+        },
         methods: {
-            //добавление новой позиции в таблицу
             addPosition: function () {
-                if(this.title=='' || this.price=='' || this.price<=0)
-                {
-                    alert('Вы некорректно ввели необходимые поля для добавления продукта')
-                }
-                else
-                {
-                    this.items.push({
-                        title: this.title,
-                        count: 0,
-                        price: this.price,
-                        showItem: false
-                    })
-                }
+                this.items.push({
+                    title: this.title,
+                    count: 0,
+                    price: this.price,
+                })
             },
             //нажание на "+" - увеличение количества
             addCount: function (i)

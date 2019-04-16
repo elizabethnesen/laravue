@@ -12,7 +12,6 @@
 <body>
 <div id="app">
     <layout></layout>
-    {{--<list-component></list-component>--}}
 </div>
 
 <script src="js/app.js"></script>
